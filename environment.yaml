@@ -1,0 +1,22 @@
+name: me583
+channels:
+  - conda-forge 
+  - defaults
+
+dependencies:
+  # Python
+  - python=3.10
+
+  # Core scientific stack
+  - numpy
+  - matplotlib
+
+  # JAX (CPU-only build)
+  - jax
+  - jaxlib   # CPU version installed automatically from conda-forge
+
+  # Equinox
+  - equinox
+
+  # Misc
+  - pip         # in case extra packages needed later
