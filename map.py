@@ -24,8 +24,8 @@ def update_plot(i, robot_trajectory, robot_future_traj, robot_controls, robot_ra
     axs[0].set_title("Simulation")
 
     axs[1].plot(robot_controls)
-    axs[1].scatter([i], robot_controls[i:i+1, 0], label="Acceleration X", color='C0')
-    axs[1].scatter([i], robot_controls[i:i+1, 1], label="Acceleration Y", color='C1')
+    axs[1].scatter([i], robot_controls[i:i+1, 0], label="v_act", color='C0')
+    axs[1].scatter([i], robot_controls[i:i+1, 1], label="w_act", color='C1')
     axs[1].hlines([acc_lims[0], acc_lims[1]], 0, num_time_steps-1, color='C1', linestyle='--')
     #axs[1].plot(robot_trajectory[:, -1], markersize=3, color='C2', label="Velocity")
     #axs[1].scatter([i], robot_trajectory[i:i+1, 3], color='C2')
