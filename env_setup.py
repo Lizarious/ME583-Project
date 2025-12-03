@@ -21,21 +21,28 @@ def repulsive_force(pos, obstacles, radius):
             force += repulse
     return force
 
-def environment_gen(num_obstacles=10,map_size=10,step_size=0.1,seed=None,return_markers=False,target=False):
+
+
+def environment_gen(num_obstacles=10,obst_scale=0.5,obst_var=0.2,map_size=10,step_size=0.1,seed=None,return_markers=False,target=False):
 
     if seed:
         print("Seed Set")
         np.random.seed(seed)
         
     # Parameters
-    obstacle_radius = 2
     momentum = 0.90
     max_iters = map_size*50
     goal_threshold = 3
     waypoint_threshold = 3
 
+
     # Generate obstacles
-    obstacles = np.random.uniform(map_size*0.05, map_size-map_size*0.05, size=(num_obstacles, 2))
+    obstacle_pos = np.random.uniform(-map_size/2, map_size/2, size=(num_obstacles, 2))
+
+    obstacle_radii = np.random.uniform(obst_scale - obst_var, obst_scale + obst_var, size=(num_obstacles, 1))
+
+    obstacles = np.hstack([obstacle_pos, obstacle_radii])
+
 
     if target:
 
